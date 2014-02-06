@@ -15,46 +15,46 @@ TESTS = (
     ("poa", ("position", "absolute")),
     ("por", ("position", "relative")),
     ("pof", ("position", "fixed")),
-  
+
     ("t", ("top", "")),
     ("ta", ("top", "auto")),
-  
+
     ("r", ("right", "")),
     ("ra", ("right", "auto")),
-  
+
     ("b", ("bottom", "")),
     ("ba", ("bottom", "auto")),
-  
+
     ("l", ("left", "")),
     ("la", ("left", "auto")),
-  
+
     ("zi", ("z-index", "")),
     ("zia", ("z-index", "auto")),
   #)),
-  
+
   ##("Positioning (Zen CSS)", (
     ("pos:", ("position", "")),
     ("pos:s", ("position", "static")),
     ("pos:a", ("position", "absolute")),
     ("pos:r", ("position", "relative")),
     ("pos:f", ("position", "fixed")),
-  
+
     ("t:", ("top", "")),
     ("t:a", ("top", "auto")),
-  
+
     ("r:", ("right", "")),
     ("r:a", ("right", "auto")),
-  
+
     ("b:", ("bottom", "")),
     ("b:a", ("bottom", "auto")),
-  
+
     ("l:", ("left", "")),
     ("l:a", ("left", "auto")),
-  
+
     ("z:", ("z-index", "")),
     ("z:a", ("z-index", "auto")),
   #)),
-  
+
   #("Block", (
     # ("f", ("float", "")), # not needed, abbr replaces with font
     ("fn", ("float", "none")),
@@ -205,7 +205,7 @@ TESTS = (
     ("fxa:a", ("flex-align", "auto")),
     ("fxa:b", ("flex-align", "baseline")),
   #)),
-  
+
   #("Sizing", (
     ("m", ("margin", "")),
     ("ma", ("margin", "auto")),
@@ -261,7 +261,7 @@ TESTS = (
     ("h:", ("height", "")),
     ("h:a", ("height", "auto")),
   #)),
-  
+
   #("Colors", (
     ("ou", ("outline", "")),
     ("oun", ("outline", "none")),
@@ -439,7 +439,7 @@ TESTS = (
     ("bdbr:c", ("box-decoration-break", "clone")),
     ("c:", ("color", "")),
   #)),
-  
+
   #("Content", (
     ("tl", ("table-layout", "")),
     ("tla", ("table-layout", "auto")),
@@ -518,7 +518,7 @@ TESTS = (
     ("coi:", ("counter-increment", "")),
     ("cor:", ("counter-reset", "")),
   #)),
-  
+
   #("Sizing", (
     ("mswm", ("-ms-writing-mode", "")),
     ("va", ("vertical-align", "")),
@@ -774,7 +774,7 @@ TESTS = (
     ("ff:f", ("font-family", "fantasy")),
     ("ff:m", ("font-family", "monospace")),
   #)),
-  
+
   #("Visual", (
     ("op", ("opacity", "")),
     ("re", ("resize", "")),
@@ -877,7 +877,7 @@ TESTS = (
     ("nl:", ("nav-left", "")),
     ("nl:a", ("nav-left", "auto")),
   #)),
-  
+
   #("Layout", (
     ("ub", ("unicode-bidi", "")),
     ("ubn", ("unicode-bidi", "normal")),
@@ -900,7 +900,7 @@ TESTS = (
     ("orp:", ("orphans", "")),
     # ("wid:", ("widows", "")), # who use widows? :)
   #)),
-  
+
   #("Document", (
     ("z", ("zoom", "")),
     ("za", ("zoom", "auto")),
@@ -961,7 +961,7 @@ if __name__ == '__main__':
             res = TEST_RESULTS.search(line)
             assert res is not None, line
             result[-1] += (res.group(1), res.group(2))
-        elif line.startswith('Ran') or line.startswith('FAILED'):  
+        elif line.startswith('Ran') or line.startswith('FAILED'):
             print line.strip()
 
     empty_test = [i for i in result if len(i) == 1]
