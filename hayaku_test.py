@@ -6,8 +6,7 @@ import StringIO
 import unittest
 
 
-from probe import extract
-from ololo import PRIORITY_PROPERTIES
+from probe import extract, PRIORITY_PROPERTIES
 
 TESTS = (
   ##("Positioning", (
