@@ -1,4 +1,4 @@
 .PHONY: test
 
 test:
-	PYTHONPATH=$(TRAVIS_BUILD_DIR):. $(TRAVIS_PYTHON_VERSION) ./test/templates_test.py
+	PYTHONPATH=$(TRAVIS_BUILD_DIR):. python ./test/templates_test.py
