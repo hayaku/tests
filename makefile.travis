@@ -2,3 +2,4 @@
 
 test:
 	PYTHONPATH=$(TRAVIS_BUILD_DIR):. python ./test/templates_test.py
+	PYTHONPATH=$(TRAVIS_BUILD_DIR):. python ./test/css_dict_test.py

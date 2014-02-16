@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from templates import expand_value
-from probe import extract
+from hayaku_templates import expand_value
+from hayaku_probe import extract
 
 class ExpandValueTests(unittest.TestCase):
     def setUp(self):
