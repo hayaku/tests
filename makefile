@@ -5,4 +5,4 @@ python = python2
 
 test:
 	PYTHONPATH=$(hayaku_path):. $(python) templates_test.py
-#	PYTHONPATH=$(hayaku_path):. $(python) css_dict_test.py
+	PYTHONPATH=$(hayaku_path):. $(python) css_dict_test.py
