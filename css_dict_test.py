@@ -47,17 +47,17 @@ class MergeDict(unittest.TestCase):
 
     def test_remove_value0(self):
         l = {'width':{'values':[1,2,3]}}
-        r = {'width':{'remove-values':[3]}}
+        r = {'width':{'remove_values':[3]}}
         self.assertEqual(merge_dict(l, r), {'width':{'values':[1,2]}})
 
     def test_remove_value1(self):
         l = {'width':{'values':[1,2,3]}}
-        r = {'width':{'remove-values':[5]}}
+        r = {'width':{'remove_values':[5]}}
         self.assertEqual(merge_dict(l, r), {'width':{'values':[1,2,3]}})
 
     def test_remove_value1(self):
         l = {'width':{'values':[1,2,3,1]}}
-        r = {'width':{'remove-values':[1]}}
+        r = {'width':{'remove_values':[1]}}
         self.assertEqual(merge_dict(l, r), {'width':{'values':[2,3]}})
 
     def test_add_values0(self):
