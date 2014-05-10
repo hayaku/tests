@@ -1,11 +1,13 @@
 -include options.mk
 python = python2
 
-.PHONY: test segmentation_test
+tests := $(patsubst %_test.py,%.log,$(wildcard *_test.py))
 
-test: segmentation_test
-	PYTHONPATH=$(hayaku_path):. $(python) templates_test.py
-	PYTHONPATH=$(hayaku_path):. $(python) css_dict_test.py
+all : $(tests)
+	rm *.log
 
-segmentation_test:
-	PYTHONPATH=$(hayaku_path):. $(python) segmentation_test.py
+$(tests): %.log: %_test.py
+	PYTHONPATH=$(hayaku_path):. $(python) $(shell find . -name $<)
+	touch $@
+
+.PHONY : all
