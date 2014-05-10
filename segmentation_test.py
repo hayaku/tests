@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from probe import segmentation, extract
-from templates import color_expand
+from hayaku_probe import segmentation, extract
+from hayaku_templates import color_expand
 
 class ExtractTests(unittest.TestCase):
     # похоже что дубль для semantic_test.py
@@ -28,7 +28,7 @@ class AbbrTests(unittest.TestCase):
 
     def test_3(self):
         self.assertEqual(segmentation('c#fe'),
-            {'property-name': 'c', 'important': False, 'abbr': 'c#fe', 'color': 'FE'})
+            {'property-name': 'c', 'important': False, 'abbr': 'c#fe', 'color': 'fe'})
 
     def test_4(self):
         self.assertEqual(segmentation('cFE'),
@@ -117,7 +117,7 @@ class AbbrTests(unittest.TestCase):
 
     def test_25(self):
         self.assertEqual(segmentation('c:#fe'),
-            {'property-name': 'c', 'important': False, 'abbr': 'c:#fe', 'color': 'FE'})
+            {'property-name': 'c', 'important': False, 'abbr': 'c:#fe', 'color': 'fe'})
 
     def test_26(self):
         self.assertEqual(segmentation('c:FE'),
@@ -153,7 +153,7 @@ class AbbrTests(unittest.TestCase):
 
     def test_34(self):
         self.assertEqual(segmentation('w10.'),
-            {'property-name': 'w', 'important': False, 'abbr': 'w10.', 'type-value': 10.0})
+            {'property-name': 'w', 'important': False, 'color': '10', 'color_alpha': '.', 'abbr': 'w10.', 'type-value': 10.0})
 
     def test_35(self):
         self.assertEqual(segmentation('c#'),
@@ -161,7 +161,7 @@ class AbbrTests(unittest.TestCase):
 
     def test_36(self):
         self.assertEqual(segmentation('w:10.'),
-            {'property-name': 'w', 'important': False, 'abbr': 'w:10.', 'type-value': 10.0})
+            {'property-name': 'w', 'important': False, 'abbr': 'w:10.', 'color': '10', 'color_alpha': '.', 'type-value': 10.0})
 
     def test_37(self):
         self.assertEqual(segmentation('c:#'),
@@ -186,7 +186,7 @@ class AbbrTests(unittest.TestCase):
 
     def test_42(self):
         self.assertEqual(segmentation('c0F.5'),
-            {'property-name': 'c', 'important': False, 'abbr': 'c0F', 'color': '0F', 'color_alpha': '.5'})
+            {'property-name': 'c', 'important': False, 'abbr': 'c0F.5', 'color': '0F', 'color': '0F', 'color_alpha': '.5', 'color_alpha': '.5'})
 
     def test_44(self):
         self.assertEqual(segmentation('w10%'),
@@ -196,49 +196,49 @@ class AbbrTests(unittest.TestCase):
 
 class ColorSegmentationTests(unittest.TestCase):
     def test_0(self):
-        self.assertEqual(color_expand('0'), '#000')
+        self.assertEqual(color_expand('0', 1), '#000')
 
     def test_1(self):
-        self.assertEqual(color_expand('#0'), '#000')
+        self.assertEqual(color_expand('#0', 1), '#000')
 
     def test_2(self):
-        self.assertEqual(color_expand('C'), '#CCC')
+        self.assertEqual(color_expand('C', 1), '#CCC')
 
     def test_3(self):
-        self.assertEqual(color_expand('CF'), '#CFCFCF')
+        self.assertEqual(color_expand('CF', 1), '#CFCFCF')
 
     def test_4(self):
-        self.assertEqual(color_expand('#C'), '#CCC')
+        self.assertEqual(color_expand('#C', 1), '#CCC')
 
     def test_5(self):
-        self.assertEqual(color_expand('#cf'), '#CFCFCF')
+        self.assertEqual(color_expand('#cf', 1), '#cfcfcf')
 
     def test_6(self):
-        self.assertEqual(color_expand('#CF'), '#CFCFCF')
+        self.assertEqual(color_expand('#CF', 1), '#CFCFCF')
 
     def test_7(self):
-        self.assertEqual(color_expand('#FFF'), '#FFF')
+        self.assertEqual(color_expand('#FFF', 1), '#FFF')
 
     def test_8(self):
-        self.assertEqual(color_expand('#111'), '#111')
+        self.assertEqual(color_expand('#111', 1), '#111')
 
     def test_9(self):
-        self.assertEqual(color_expand('111'), '#111')
+        self.assertEqual(color_expand('111', 1), '#111')
 
     def test_10(self):
-        self.assertEqual(color_expand('#f'), '#FFF')
+        self.assertEqual(color_expand('#f', 1), '#fff')
 
     def test_11(self):
-        self.assertEqual(color_expand('123456'), '#123456')
+        self.assertEqual(color_expand('123456', 1), '#123456')
 
     def test_12(self):
-        self.assertEqual(color_expand('abcdef'), '#ABCDEF')
+        self.assertEqual(color_expand('abcdef', 1), '#abcdef')
 
     def test_13(self):
-        self.assertEqual(color_expand('#0F'), '#0F0F0F')
+        self.assertEqual(color_expand('#0F', 1), '#0F0F0F')
 
     def test_14(self):
-        self.assertEqual(color_expand('0F'), '#0F0F0F')
+        self.assertEqual(color_expand('0F', 1), '#0F0F0F')
 
     def test_15(self):
         self.assertEqual(color_expand('0','.5'), 'rgba(0,0,0,.5)')
@@ -247,10 +247,10 @@ class ColorSegmentationTests(unittest.TestCase):
         self.assertEqual(color_expand('F','.2'), 'rgba(255,255,255,.2)')
 
     def test_17(self):
-        self.assertEqual(color_expand('ABCD'), 'rgba(170,187,204,0.87)')
+        self.assertEqual(color_expand('ABCD', 1), 'rgba(170,187,204,0.87)')
 
     def test_18(self):
-        self.assertEqual(color_expand('ABC80'), 'rgba(170,187,204,0.5)')
+        self.assertEqual(color_expand('ABC80', 1), 'rgba(170,187,204,0.5)')
 
 
 if __name__ == '__main__':
